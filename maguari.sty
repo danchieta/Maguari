@@ -1,0 +1,21 @@
+\newcommand{\instituicao}[1] {
+	\newcommand{\imprimeinstituicao}{#1}
+
+}
+
+\newcommand{\disciplina}[1] {
+	\newcommand{\imprimedisciplina}{#1}
+
+}
+
+\renewcommand{\maketitle} {
+\makeatletter
+\noindent
+\imprimeinstituicao \\
+Aluno: \@author \\
+\begin{center}
+{\LARGE \bfseries \sffamily \@title} \\
+\end{center}
+%Disciplina: \imprimedisciplina \\
+\makeatother
+}
