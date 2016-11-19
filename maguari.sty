@@ -1,21 +1,14 @@
-\newcommand{\instituicao}[1] {
-	\newcommand{\imprimeinstituicao}{#1}
+\newcommand{\imprimecabecalho}{}
 
-}
-
-\newcommand{\disciplina}[1] {
-	\newcommand{\imprimedisciplina}{#1}
-
+\newcommand{\cabecalho}[1]{
+	\renewcommand{\imprimecabecalho}{\noindent #1}
 }
 
 \renewcommand{\maketitle} {
 \makeatletter
-\noindent
-\imprimeinstituicao \\
-Aluno: \@author \\
+\imprimecabecalho
 \begin{center}
-{\LARGE \bfseries \sffamily \@title} \\
+{\Large \bfseries \@title} \\
 \end{center}
-%Disciplina: \imprimedisciplina \\
 \makeatother
 }
