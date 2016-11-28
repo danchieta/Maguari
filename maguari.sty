@@ -1,14 +1,35 @@
+\usepackage{xparse}
+
+\makeatletter
+\newcounter{questaocount}
+\setcounter{questaocount}{1}
+
 \newcommand{\imprimecabecalho}{}
+
+\DeclareDocumentCommand \questao{s o o}{
+	\noindent \bfseries Questão\IfNoValueF{#2}{: #2}
+}
+
+% \newcommand{\questao}[1]{
+	% {\noindent \bfseries Questão \thequestaocount\ 
+	% \ifsecondargument :#1 \par}	
+	% \stepcounter{questaocount}
+% }
 
 \newcommand{\cabecalho}[1]{
 	\renewcommand{\imprimecabecalho}{\noindent #1}
 }
 
 \renewcommand{\maketitle} {
-\makeatletter
 \imprimecabecalho
 \begin{center}
 {\Large \bfseries \@title} \\
 \end{center}
-\makeatother
 }
+
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\bfseries \large}
+								   }
+\makeatother
