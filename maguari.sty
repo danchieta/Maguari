@@ -7,7 +7,13 @@
 \newcommand{\imprimecabecalho}{}
 
 \DeclareDocumentCommand \questao{s o o}{
-	\noindent \bfseries Questão\IfNoValueF{#2}{: #2}
+	{\vspace{0.2cm} \noindent \bfseries Questão\IfBooleanTF{#1}{
+		\IfNoValueF{#2}{#2}\IfNoValueF{#3}{: #3}
+	}{
+		\thequestaocount\IfNoValueF{#2}{: #2}
+		\stepcounter{questaocount}
+	}
+	\par}
 }
 
 % \newcommand{\questao}[1]{
