@@ -1,8 +1,16 @@
 \usepackage{xparse}
 
 \makeatletter
+
+% Contador de questão
 \newcounter{questaocount}
 \setcounter{questaocount}{1}
+
+%contador de itens
+\newcounter{itemcount}
+\setcounter{itemcount}{1}
+
+\newcounter{subitemcount}[itemcount]
 
 \newcommand{\imprimecabecalho}{}
 
@@ -16,11 +24,19 @@
 	\par}
 }
 
-% \newcommand{\questao}[1]{
-	% {\noindent \bfseries Questão \thequestaocount\ 
-	% \ifsecondargument :#1 \par}	
-	% \stepcounter{questaocount}
-% }
+\newcommand{\qitem}{
+	{\vspace{0.2cm} \noindent
+	\thequestaocount.%
+	\stepcounter{questaocount}%
+	\setcounter{subitemcount}{1}%
+	}
+}
+
+\newcommand{\qsubitem}{
+	{\vspace{0.2cm} \noindent
+	(\alph{subitemcount})
+	\stepcounter{subitemcount}}
+}
 
 \newcommand{\cabecalho}[1]{
 	\renewcommand{\imprimecabecalho}{\noindent #1}
